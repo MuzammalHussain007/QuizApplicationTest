@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+          <variable
+              name="list"
+              type="com.example.quizapplicationtest.mvvm.viewmodal.HistoryViewModal" />
+        <import type="android.view.View"/>
+        <import type="android.R.string"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"
+        tools:context=".activites.HistoryActivity">
+
+        <RelativeLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="26dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/backBtn"
+                android:layout_marginStart="10dp"
+                android:tint="@color/backgroundcolor"
+                android:src="@drawable/baseline_arrow_back_ios_24"
+                android:layout_height="26dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/titleTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="History" />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginStart="2dp"
+            tools:listitem="@layout/custom_result"
+            android:layout_marginTop="2dp"
+            android:id="@+id/historyRecyclarView"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/noHistoryFound"
+            android:text="No History Found"
+            android:textSize="16dp"
+            android:visibility="@{list.historyList.size() > 0 ? View.VISIBLE : View.GONE }"
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:textColor="@color/backgroundcolor" />
+
+    </RelativeLayout>
+</layout>
